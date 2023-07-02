@@ -13,7 +13,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 /**
- * Run the Husky Maps server.
+ * Run the Triton Maps server.
  *
  * @see MapGraph
  */
@@ -26,11 +26,7 @@ public class MapServer {
      * The OpenStreetMap XML file path. Downloaded from <a href="http://download.bbbike.org/osm/">BBBike</a>
      * using custom region selection.
      */
-    private static final String OSM_DB_PATH = "seattle.osm.gz";
-    /**
-     * The place-importance TSV data file path from OpenStreetMap.
-     */
-    private static final String PLACES_PATH = "places.tsv";
+    private static final String OSM_DB_PATH = "la-jolla.osm.gz";
     /**
      * Maximum number of autocomplete search results.
      */
@@ -39,7 +35,7 @@ public class MapServer {
     public static void main(String[] args) throws Exception {
         SpatialContext context = SpatialContext.GEO;
         ShapeFactory factory = context.getShapeFactory();
-        MapGraph map = new MapGraph(OSM_DB_PATH, PLACES_PATH, context);
+        MapGraph map = new MapGraph(OSM_DB_PATH, context);
         try (Javalin app = Javalin.create(config -> config.spaRoot.addFile("/", "index.html")).start(port())) {
             app.get("/map/{lon},{lat},{zoom}/{width}x{height}", ctx -> {
                 double lon = ctx.pathParamAsClass("lon", Double.class).get();

@@ -1,3 +1,3 @@
 FROM eclipse-temurin:11-jre
-COPY out/artifacts/huskymaps/huskymaps.jar huskymaps.jar
-CMD ["java", "-jar", "huskymaps.jar"]
+COPY out/artifacts/tritonmaps/tritonmaps.jar tritonmaps.jar
+CMD ["java", "-jar", "tritonmaps.jar"]
