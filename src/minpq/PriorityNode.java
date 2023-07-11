@@ -31,16 +31,17 @@ class PriorityNode<E> {
 
     @Override
     public String toString() {
-        return "PriorityNode{" +
-                "element=" + element +
-                ", priority=" + priority +
-                '}';
+        return "PriorityNode{element=%s, priority=%s}".formatted(element, priority);
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         PriorityNode<?> that = (PriorityNode<?>) o;
         return element.equals(that.element);
     }

@@ -20,6 +20,10 @@ public class DNASearch {
      * Path to the DNA text.
      */
     private static final String PATH = "data/ecoli.txt";
+    /**
+     * Maximum number of characters that will be printed out before truncating.
+     */
+    private static final int MAX_LINE_LENGTH = 100;
 
     public static void main(String[] args) throws IOException {
         String dna = new Scanner(new FileInputStream(PATH)).next();
@@ -37,8 +41,8 @@ public class DNASearch {
             System.out.println(matches.size() + " matches");
             for (int i = 0; i < Math.min(matches.size(), MAX_MATCHES); i += 1) {
                 CharSequence match = matches.get(i);
-                if (match.length() >= 97) {
-                    match = match.subSequence(0, 97) + "...";
+                if (match.length() > MAX_LINE_LENGTH) {
+                    match = match.subSequence(0, MAX_LINE_LENGTH - 3) + "...";
                 }
                 System.out.println(match);
             }

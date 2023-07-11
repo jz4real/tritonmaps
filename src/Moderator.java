@@ -14,6 +14,10 @@ public class Moderator {
      * Path to the toxic content.
      */
     private static final String PATH = "data/toxic.tsv";
+    /**
+     * The maximum number of comments to add at any given time.
+     */
+    private static final int MAX_BATCH_SIZE = 100;
 
     public static void main(String[] args) throws IOException {
         Scanner scanner = new Scanner(new FileInputStream(PATH));
@@ -21,7 +25,7 @@ public class Moderator {
 
         MinPQ<String> pq = new DoubleMapMinPQ<>();
         Random random = new Random();
-        addComments(pq, scanner, random.nextInt(100));
+        addComments(pq, scanner, random.nextInt(MAX_BATCH_SIZE));
         Scanner stdin = new Scanner(System.in);
         while (!pq.isEmpty()) {
             System.out.println();

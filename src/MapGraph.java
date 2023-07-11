@@ -136,10 +136,7 @@ public class MapGraph implements AStarGraph<Point> {
 
     @Override
     public String toString() {
-        return "MapGraph{" +
-                "osmPath='" + osmPath + '\'' +
-                ", context='" + context + '\'' +
-                '}';
+        return "MapGraph{osmPath='%s', context='%s'}".formatted(osmPath, context);
     }
 
     /**
@@ -222,11 +219,9 @@ public class MapGraph implements AStarGraph<Point> {
                     validWay = allowedHighwayTypes.contains(v);
                 }
             } else if (state.equals("node") && qName.equals("tag") && attributes.getValue("k").equals("name")) {
-                name = attributes.getValue("v").strip()
-                        .replace('“', '"')
-                        .replace('”', '"')
-                        .replace('‘', '\'')
-                        .replace('’', '\'');
+                name = attributes.getValue("v").strip();
+                name = name.replaceAll("[“”]", "\"");
+                name = name.replaceAll("[‘’]", "'");
             }
         }
 
