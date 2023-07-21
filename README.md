@@ -45,3 +45,7 @@ payment method needed).
 1. Open the `fly.toml` file in a text editor and set the `force_https` option to false.
 1. Share your MapBox access token with fly as an app secret with the terminal command `fly secrets set TOKEN=...`.
 1. Finally, deploy the app with the terminal command `fly deploy`.
+
+# My code
+
+Blabla
