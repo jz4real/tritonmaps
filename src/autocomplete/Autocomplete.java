@@ -30,7 +30,7 @@ public interface Autocomplete {
      * Returns true if and only if the given term matches the given prefix.
      *
      * @param prefix prefix template.
-     * @param term term to check against the prefix.
+     * @param term   term to check against the prefix.
      * @return true if and only if the given term matches the given prefix.
      */
     static boolean isPrefixOf(CharSequence prefix, CharSequence term) {
